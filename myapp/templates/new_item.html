@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{# Importing macro #}
+{% from "_macros.html" import render_field, back_button %}
+
+
+
+{% block content %}
+
+<head>
+    <style>
+        .main-body{
+            width: 100%;
+            max-width: 330px;
+            padding: 5px 15px 15px 15px;
+            margin: auto;
+        }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+</head>
+
+<body class="text-center">
+
+    {# Back button #}
+    <div align="left" style="padding: 20px 20px 0px 20px">
+        {{ back_button() }}
+    </div>
+
+    <div class="main-body">
+        <form action="" method ="post" action="/">
+          {{ form.csrf_token }}
+    {#        for protection used with Encription key #}
+        {{ form.hidden_tag() }}
+
+        <h1 class="h1 mb-3 fw-normal">New Item</h1>
+            <h5>Required</h5>
+                <hr>
+                {{ render_field(form.name, id="floatingName", placeholder=form.name.label.text) }}
+                {{ render_field(form.quantity, id="floatingQuantity", placeholder=form.quantity.label.text) }}
+                {{ render_field(form.cost, id="floatingCost", placeholder=form.cost.label.text) }}
+                <hr>
+            <br>
+            {{ render_field(form.model_or_type, id="floatingModel_or_type", placeholder=form.model_or_type.label.text) }}
+            {{ render_field(form.size, id="floatingSize", placeholder=form.size.label.text) }}
+            {{ render_field(form.weight, id="floatingWeight", placeholder=form.weight.label.text) }}
+            {{ render_field(form.description, id="floatingDescription", placeholder=form.description.label.text) }}
+
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit_add_item">Register</button>
+        </form>
+    </div>
+</body>
+{% endblock %}

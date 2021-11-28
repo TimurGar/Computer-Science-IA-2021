@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{# Importing macro #}
+{% from "_macros.html" import render_field %}
+{% from "_macros.html" import back_button %}
+
+
+{% block content %}
+
+<head>
+    <style>
+        .main-body{
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+</head>
+
+<body class="text-center">
+
+    {# Back button #}
+    <div align="left" style="padding: 20px">
+        {{ back_button() }}
+    </div>
+
+    <div class="main-body">
+        <form action="" method ="post" action="/">
+          {{ form.csrf_token }}
+    {#        for protection used with Encription key #}
+        {{ form.hidden_tag() }}
+
+        <h1 class="h1 mb-3 fw-normal">New Project</h1>
+
+            {{ render_field(form.name, id="floatingName", placeholder=form.name.label.text) }}
+            {{ render_field(form.description, id="floatingDescription", placeholder=form.description.label.text) }}
+
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit_add_item">Add Project</button>
+        </form>
+    </div>
+</body>
+
+{% endblock %}

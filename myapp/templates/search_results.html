@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% from "_macros.html" import back_button %}
+
+
+{% block content %}
+    <div style="padding: 20px">
+
+        {{ back_button() }}
+
+        <div class="p-2 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+
+    <h1>Search Results for: "{{ results }}" </h1>
+    {% if search_list %}
+        <h3> <u>{{ num_items }}</u> result(s) found</h3>
+    {% else %}
+        <h3> <u>0</u> results found</h3>
+    {% endif %}
+
+
+    {% for item in search_list %}
+
+        <div class="p-2 mb-2 bg-dark rounded-3">
+            <div class="container-fluid py-3">
+                <table>
+                    <tr>
+                        <td><img src="{{ item.avatar(30) }}" alt=""></td>
+                        <td>
+                            <a href="{{ url_for('item_profile', name=item.name, item_id=item.id) }}">
+                                <h4 style="padding-left: 10px";>{{ item.name }}</h4>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+{#        <h5>{{ item.name }}</h5>#}
+{#        <h5>{{ item.description }}</h5>#}
+
+    {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

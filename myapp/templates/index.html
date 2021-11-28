@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link href="static/index_stylesheet.css" rel="stylesheet">
+
+<div style="padding: 20px">
+
+<h1>Hi, {{ current_user.username }}!</h1>
+<h4>Your projects:</h4>
+
+
+
+{# Listing all the projects   #}
+{% for project in projects %}
+    <div class="p-2 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+          <table>
+              <tr>
+                <td><img src="{{ project.avatar(50) }}" alt=""></td>
+                <td>
+                    <a href="{{ url_for('project_profile', name=project.name, project_id=project.id) }}">
+                        <h3 style="padding-left: 10px";>{{ project.name }}</h3>
+                    </a>
+                </td>
+              </tr>
+        </table>
+
+          <p class="col-md-5 fs-5">{{ project.description }}</p>
+
+      </div>
+    </div>
+
+{#    <table>#}
+{#        <tr valign="top">#}
+{#                <td><img src="{{ project.avatar(36) }}" alt=""></td>#}
+{#                <td>#}
+{#                    <a href="{{ url_for('project_profile', name=project.name, project_id=project.id) }}">#}
+{#                        <b>{{ project.name }}</b>#}
+{#                    </a>#}
+{#                </td>#}
+{#            </tr>#}
+{#    </table>#}
+{% endfor %}
+{#    {% if prev_url %}#}
+{#    <a href="{{ prev_url }}">Newer posts</a>#}
+{#    {% endif %}#}
+{#    {% if next_url %}#}
+{#    <a href="{{ next_url }}">Older posts</a>#}
+{#    {% endif %}#}
+
+
+{# New project button   #}
+    <a href="{{ url_for('new_project') }}">
+        <button class="btn btn-primary btn-lg" type="button">New project</button>
+    </a>
+
+
+</div>>
+
+{% endblock %}
+

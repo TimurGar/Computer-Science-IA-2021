@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% from "_macros.html" import back_button %}
+
+
+{% block content %}
+    <style>
+        .column{
+            padding: 15px;
+        }
+
+    </style>
+
+
+    <div style="padding: 20px">
+
+{#        Back Button   #}
+        {{ back_button() }}
+
+        <div class="p-2 mb-4 bg-light rounded-3">
+          <div class="container-fluid py-5">
+              <table>
+                  <tr>
+                    <td><img src="{{ item.avatar(50) }}" alt=""></td>
+                    <td>
+                        <h3 style="padding-left: 10px";>{{ item.name }}</h3>
+                    </td>
+                  </tr>
+            </table>
+              <br>
+              <table>
+                  <tr>
+                      <td class="column"><h4>Quantity:</h4></td>
+                      <td><h5>{{ item.quantity }}</h5></td>
+                  </tr>
+                  <tr>
+                      <td class="column"><h4>Cost ($USD):</h4></td>
+                      <td><h5>{{ item.cost }}</h5></td>
+                  </tr>
+                  <tr>
+                    <td class="column"><h4>Model/Type:</h4></td>
+                    <td><h5>{{ item.model_or_type }}</h5></td>
+                  </tr>
+                  <tr>
+                      <td class="column"><h4>Size (length*width*height):</h4></td>
+                      <td><h5>{{ item.size }}</h5></td>
+                  </tr>
+                  <tr>
+                      <td class="column"><h4>Weight (g):</h4></td>
+                      <td><h5>{{ item.weight }}</h5></td>
+                  </tr>
+                  <tr>
+                      <td class="column"><h4>Description:</h4></td>
+                      <td><h5>{{ item.description }}</h5></td>
+                  </tr>
+              </table>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}
+

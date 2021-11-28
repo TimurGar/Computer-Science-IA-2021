@@ -1,0 +1,106 @@
+2021-07-19 18:00:29,636 ERROR: Exception on /user/Timur [GET] [in /Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/routes.py", line 79, in user
+    return render_template('user.html', user=user, posts=posts)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/templates/base.html", line 35, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/templates/user.html", line 19, in block "content"
+    {% include "_post.html" %}
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/templates/_post.html", line 4, in top-level template code
+    <td>{{ project.author.username }} says: <b>{{ project.name }}</b></td>
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'project' is undefined
+2021-07-20 11:21:47,740 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:23:35,766 ERROR: Exception on /user/Timur [GET] [in /Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/routes.py", line 79, in user
+    return render_template('user.html', user=user, posts=posts)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/templates/base.html", line 35, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/templates/user.html", line 19, in block "content"
+    {% include "_post.html" %}
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/templates/_post.html", line 4, in top-level template code
+    <td>{{ project.author.username }} says: <b>{{ project.name }}</b></td>
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'project' is undefined
+2021-07-20 11:23:53,519 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:23:54,138 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:26:44,478 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:26:45,198 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:28:25,579 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:28:26,783 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:29:38,652 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:30:07,000 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:30:07,634 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:30:45,381 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:30:46,259 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:48:19,033 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:51:39,640 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:51:47,641 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:54:53,511 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:57:28,431 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 11:57:29,145 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 12:04:07,983 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 12:04:08,861 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 12:19:42,304 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 12:19:43,074 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 12:38:16,243 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 12:38:17,327 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 12:39:08,103 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 12:39:08,900 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 12:40:24,761 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]
+2021-07-20 12:40:25,555 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]

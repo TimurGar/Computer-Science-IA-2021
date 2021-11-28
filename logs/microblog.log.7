@@ -1,0 +1,71 @@
+2021-07-19 13:08:42,288 ERROR: Exception on / [GET] [in /Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/clsregistry.py", line 393, in _resolve_name
+    rval = d[token]
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/util/_collections.py", line 746, in __missing__
+    self[key] = val = self.creator(key)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/clsregistry.py", line 372, in _access_cls
+    return self.fallback[key]
+KeyError: 'Post'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 1948, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask/app.py", line 2242, in preprocess_request
+    rv = func()
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/routes.py", line 67, in before_request
+    if current_user.is_authenticated:
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 318, in _load_user
+    user = self._user_callback(user_id)
+  File "/Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/models.py", line 37, in load_user
+    return User.query.get(int(id))
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 550, in __get__
+    mapper = orm.class_mapper(type)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/base.py", line 436, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/base.py", line 415, in _inspect_mapped_class
+    mapper._check_configure()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 1874, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 3384, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 3423, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 1891, in _post_configure_properties
+    prop.init()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 228, in init
+    self.do_init()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/relationships.py", line 2135, in do_init
+    self._process_dependent_arguments()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/relationships.py", line 2230, in _process_dependent_arguments
+    self.target = self.entity.persist_selectable
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 1097, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/relationships.py", line 2097, in entity
+    argument = self._clsregistry_resolve_name(self.argument)()
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/clsregistry.py", line 397, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/orm/clsregistry.py", line 383, in _raise_for_name
+    from_=err,
+  File "/Users/m19-20/Desktop/Computer Science/flaskProject/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+sqlalchemy.exc.InvalidRequestError: When initializing mapper mapped class User->user, expression 'Post' failed to locate a name ('Post'). If this is a class name, consider adding this relationship() to the <class 'myapp.models.User'> class after both dependent classes have been defined.
+2021-07-19 16:49:10,614 INFO: Microblog startup [in /Users/m19-20/Desktop/Computer Science/CS IA 2021/myapp/__init__.py:48]

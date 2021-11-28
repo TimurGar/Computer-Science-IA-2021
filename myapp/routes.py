@@ -97,12 +97,16 @@ def project_profile(name, project_id):
     # Searching
     form = SearchForm()
     if form.validate_on_submit():
+        # Saving data typed in the search field as results
         results = form.search.data
 
-        # Multi-word search
-        # Each word is queried separately
+        # for Multi-word search each word has to be queried separately
+        # Splitting entered data into words
         words = results.split()
+
+        # Querying each entered word separately
         for word in words:
+            # Operation below is required for the search to work properly
             search_string = "%" + "%".join(word.split()) + "%"
 
             # Querying each word to see if it appears in any columns (name, description, size, etc.)
@@ -111,6 +115,7 @@ def project_profile(name, project_id):
                                                 (Item.quantity.ilike(search_string)), (Item.weight.ilike(search_string)),
                                                 (Item.cost.ilike(search_string)))).filter_by(project_id=project_id)
 
+        # Counting the number of similarities (to entered data) found
         num_items = search_list.count()
 
         return render_template('search_results.html', results=results, search_list=search_list, num_items=num_items)

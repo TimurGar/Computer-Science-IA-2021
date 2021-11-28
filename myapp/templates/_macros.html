@@ -1,7 +1,9 @@
+{# Creating a custom macro for rendering input field #}
 {% macro render_field(field) %}
 <div class="form-floating">
     {{ field(class_='form-control', **kwargs)|safe }}
     <label for="{{ field.name }}">{{ field.label.text }}</label>
+
     {# showing error messages #}
     <ul>
     {% for error in field.errors %}
@@ -11,16 +13,23 @@
 </div>
 {% endmacro %}
 
+
+{# Creating a custom macro for Back button #}
 {% macro back_button() %}
+    {# Creating goBack function to allow button return to the previous page   #}
     <script>
         function goBack() {
             window.history.back();
         }
     </script>
+
+    {# Adding Bootstrap 5 style to the button #}
     <div style="padding-bottom: 10px" class="btn-group" role="group" aria-label="Third group">
         <button type="button" class="btn btn-danger" onclick="goBack()"> < Back </button>
     </div>
 {% endmacro %}
+
+
 
 
 

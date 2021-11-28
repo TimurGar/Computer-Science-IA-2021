@@ -160,7 +160,7 @@ def edit_project():
 
     return render_template('edit_project.html', title='Edit Project', form=form)
 
-
+# New Item page
 @app.route('/<project_id>/new_item', methods=['GET', 'POST'])
 @login_required
 def new_item(project_id):

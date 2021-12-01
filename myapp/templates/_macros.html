@@ -1,7 +1,9 @@
 {# Creating a custom macro for rendering input field #}
 {% macro render_field(field) %}
 <div class="form-floating">
+    {# First agrument will determine what type of input field will be rendered #}
     {{ field(class_='form-control', **kwargs)|safe }}
+    {# Specifing a name and label of a field #}
     <label for="{{ field.name }}">{{ field.label.text }}</label>
 
     {# showing error messages #}

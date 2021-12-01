@@ -18,6 +18,8 @@ class RegistrationForm(FlaskForm):
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
 
+    # Functions that make sure newly registered users don't have same usernames and/or emails.
+    # Meaning username and email of each user should be unique
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:

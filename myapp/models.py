@@ -1,3 +1,6 @@
+import binascii
+import hashlib
+import os
 from datetime import datetime
 from hashlib import md5
 
@@ -13,7 +16,6 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
     # One to many relationship between User and Project
@@ -23,10 +25,33 @@ class User(UserMixin, db.Model):
         return '<User {}>'.format(self.username)
 
     def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
+
+        # hashing a random sequence with 60 bits: produces 256 bits or 64 hex chars
+        salt = hashlib.sha256(os.urandom(60)).hexdigest().encode(
+            'ascii')
+        password_hash = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
+        password_hash = binascii.hexlify(password_hash)
+        hashed_password = (salt + password_hash).decode('ascii')
+        self.password_hash = hashed_password
+
 
     def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
+        # Splitting hashed password into salt, and password itself
+        salt = password[:64]
+        password = password[64:]
+
+        # Decoding
+        password_hash = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'),
+                                      salt.encode('ascii'), 100000)
+        password_hash = binascii.hexlify(password_hash).decode('ascii')
+        return password_hash
+
+
+        # return check_password_hash(self.password_hash, password)
+
+
+        # self.password_hash = generate_password_hash(password)
+
 
     # Method for returning an avatar from Gravatar.com
     def avatar(self, size):

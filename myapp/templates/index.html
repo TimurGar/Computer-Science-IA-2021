@@ -6,7 +6,14 @@
 <div style="padding: 20px">
 
 <h1>Hi, {{ current_user.username }}!</h1>
-<h4>Your projects:</h4>
+
+{#              Heading     #}
+              {% if items %}
+                  <h4>Your projects:</h4>
+              {% else %}
+                <h4>No projects added yet</h4>
+              {% endif %}
+{#<h4>Your projects:</h4>#}
 
 
 

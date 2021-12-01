@@ -29,9 +29,9 @@ def login():
     # If the form is filled out completely(all required fields are completed) = True
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
+        # Check if the user exists and check whether entered password is correct
         if user is None or not user.check_password(form.password.data):
             # Creating a flash messages
-
             flash('Invalid username or password')
             return redirect(url_for('login'))
 
@@ -45,6 +45,8 @@ def login():
             next_page = url_for('index')
             print("login successful")
         return redirect(next_page)
+
+    # Rendering login page
     print(current_user.get_id())
     return render_template('login.html',title='Sign In', form=form)
 
@@ -60,14 +62,19 @@ def register():
         return redirect(url_for('index'))
 
     form = RegistrationForm()
+    # Checking whether the form is submitted
     if form.validate_on_submit():
+        # Adding data to the database with the information provided (entered)
         user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
         print("User with email and password: has been created")
         flash('Congratulations, you are now a registered user!')
+
+        # Redirect the use to Login page
         return redirect(url_for('login'))
+    # Rendering Register page
     return render_template('register.html', title='Register', form=form)
 
 @app.before_request
@@ -106,7 +113,8 @@ def project_profile(name, project_id):
 
         # Querying each entered word separately
         for word in words:
-            # Operation below is required for the search to work properly
+            # Add "%" in front, back and in between each word to allow search
+            # to find similar data, not necessarily exact to "word".
             search_string = "%" + "%".join(word.split()) + "%"
 
             # Querying each word to see if it appears in any columns (name, description, size, etc.)

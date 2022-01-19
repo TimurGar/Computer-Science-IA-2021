@@ -1,4 +1,4 @@
-{# Creating a custom macro for rendering input field #}
+{# Creating a custom macro for rendering input field using Jinja 2 #}
 {% macro render_field(field) %}
 <div class="form-floating">
     {# First agrument will determine what type of input field will be rendered #}
@@ -6,7 +6,7 @@
     {# Specifing a name and label of a field #}
     <label for="{{ field.name }}">{{ field.label.text }}</label>
 
-    {# showing error messages #}
+    {# displaying error messages #}
     <ul>
     {% for error in field.errors %}
            <li style="color: red;">{{ error }}</li>

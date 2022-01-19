@@ -14,7 +14,7 @@ from myapp.models import User, Project, Item
 @app.route('/index')
 @login_required
 def index():
-    projects = Project.query.order_by(Project.timestamp.desc()).filter_by(author=current_user)
+    projects = Project.query.order_by(Project.timestamp.desc()).filter_by(author=current_user).all()
 
     return render_template('index.html', title='Home', projects=projects)
 

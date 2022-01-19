@@ -8,7 +8,7 @@ def make_shell_context():
     return {'db': db, 'User': User}
 
 if __name__ == '__main__':
-    app.run(debug=True) # Here
+    app.run(debug=False) # Here
     Bootstrap(app)
 
 

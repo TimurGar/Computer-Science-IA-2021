@@ -9,7 +9,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from myapp.forms import LoginForm, RegistrationForm, NewProjectForm, EditProjectForm, NewItemForm, SearchForm
 from myapp.models import User, Project, Item
 
-
+# Home/Index page
 @app.route('/')
 @app.route('/index')
 @login_required
@@ -83,7 +83,7 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
-
+# Project profile 
 @app.route('/user/<project_id>/<name>', methods=['GET', 'POST'])
 @login_required
 def project_profile(name, project_id):
@@ -132,9 +132,7 @@ def project_profile(name, project_id):
         print(item.name)
     return render_template('project_profile.html', project=project, items=items, form=form)
 
-
-
-
+# New Project page
 @app.route('/new_project', methods=['GET', 'POST'])
 @login_required
 def new_project():
@@ -151,27 +149,6 @@ def new_project():
 
     return render_template('new_project.html', title='New Project', form=form)
 
-@app.route('/edit_project', methods=['GET', 'POST'])
-@login_required
-def edit_project():
-    form = EditProjectForm()
-    if form.validate_on_submit():
-        # query doesn't work
-        project = Project.query.filter_by(name=form.name.data)
-        print(project)
-        project.name = form.name.data
-        project.description = form.description.data
-        db.session.commit()
-        flash('Your changes have been saved')
-        return redirect(url_for('edit_project'))
-
-    # Auto paste the initial data
-    # elif request.method == 'GET':
-    #     project = Project.query.filter_by(name=form.name.data)
-    #     form.name.data = project.name
-    #     form.description.data = project.description
-
-    return render_template('edit_project.html', title='Edit Project', form=form)
 
 # New Item page
 @app.route('/<project_id>/new_item', methods=['GET', 'POST'])

@@ -35,17 +35,25 @@ class User(UserMixin, db.Model):
         self.password_hash = hashed_password
 
 
-    def check_password(self, password):
+    def check_password(self, provided_password, stored_password):
         # Splitting hashed password into salt, and password itself
-        salt = password[:64]
-        password = password[64:]
+        # salt = password[:64]
+        # password = password[64:]
+        #
+        # # Decoding
+        # password_hash = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'),
+        #                               salt.encode('ascii'), 100000)
+        # password_hash = binascii.hexlify(password_hash).decode('ascii')
+        # return password_hash
 
-        # Decoding
-        password_hash = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'),
-                                      salt.encode('ascii'), 100000)
-        password_hash = binascii.hexlify(password_hash).decode('ascii')
-        return password_hash
-
+        salt = stored_password[:64]
+        stored_password = stored_password[64:]
+        pwdhash = hashlib.pbkdf2_hmac('sha256',
+                                      provided_password.encode('utf-8'),
+                                      salt.encode('ascii'),
+                                      100000)
+        pwdhash = binascii.hexlify(pwdhash).decode('ascii')
+        return pwdhash == stored_password
 
         # return check_password_hash(self.password_hash, password)
 

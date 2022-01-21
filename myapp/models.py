@@ -36,16 +36,6 @@ class User(UserMixin, db.Model):
 
 
     def check_password(self, provided_password, stored_password):
-        # Splitting hashed password into salt, and password itself
-        # salt = password[:64]
-        # password = password[64:]
-        #
-        # # Decoding
-        # password_hash = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'),
-        #                               salt.encode('ascii'), 100000)
-        # password_hash = binascii.hexlify(password_hash).decode('ascii')
-        # return password_hash
-
         salt = stored_password[:64]
         stored_password = stored_password[64:]
         pwdhash = hashlib.pbkdf2_hmac('sha256',
@@ -54,11 +44,6 @@ class User(UserMixin, db.Model):
                                       100000)
         pwdhash = binascii.hexlify(pwdhash).decode('ascii')
         return pwdhash == stored_password
-
-        # return check_password_hash(self.password_hash, password)
-
-
-        # self.password_hash = generate_password_hash(password)
 
 
     # Method for returning an avatar from Gravatar.com
